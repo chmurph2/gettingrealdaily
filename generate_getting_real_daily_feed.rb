@@ -24,7 +24,7 @@ File.open("atom.xml", "w") do |file|
     xml.id "tag:#{grd_domain},2005:/"
     xml.link :type => "text/html", :href => "http://#{gr37s_domain}", :rel => "alternate"
     xml.link :type => "application/atom+xml", :href => "http://#{grd_domain}/atom.xml", :rel => "self"
-    xml.title "Getting Real Daily"
+    xml.title "Getting Real (daily)"
     xml.updated now
     xml.entry do
       xml.id "tag:#{grd_domain},2005:/#{essay_uri}?#{Time.now.strftime("%Y%m%d")}"
@@ -47,7 +47,7 @@ File.open("index.html", "w") do |file|
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <title>Getting Real (daily)</title>
-    <link type="application/atom+xml" href="http://feeds2.feedburner.com/GettingRealDaily" rel="alternate" title="Getting Real Daily"/>
+    <link type="application/atom+xml" href="http://feeds2.feedburner.com/GettingRealDaily" rel="alternate" title="Getting Real (daily)"/>
     <style type="text/css">
       body {
         font-family: georgia;
