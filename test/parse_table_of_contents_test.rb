@@ -1,4 +1,3 @@
-# require "#{File.dirname(__FILE__)}/test_helper"
 require "test/unit"
 require "../parse_table_of_contents"
 
