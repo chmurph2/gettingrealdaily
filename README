@@ -1,0 +1,8 @@
+p(meta). February 28, 2009 - Leesburg, VA
+
+One year ago I sat down to read "37signals’s":http://37signals.com popular book "Getting Real":http://gettingreal.37signals.com/, which is the "smarter, faster, easier way to build a successful web-based application."  I read it straight through, which isn't typical for me, and ever since then I've been meaning to read it again as a refresher and for inspiration.
+
+Recently, the "CEO":http://twitter.com/jasonfried of 37signals "twittered":http://twitter.com/jasonfried/status/1188017567 about "The Random Reality" "bookmarklet":http://is.gd/kniX that, when clicked, serves up one of the book's essays randomly.  This got me thinking; instead of a _random_ essay, I would rather subscribe to a daily feed of the book in chronological order.  That is, one essay a day to start things off right. So, I whipped up something that I (and you) can subscribe to:
+
+Getting Real (Daily)
+"http://gettingrealdaily.com":http://gettingrealdaily.com
