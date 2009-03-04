@@ -3,6 +3,8 @@
 require 'rubygems'
 require 'builder'
 require 'active_support'
+require 'haml'
+require 'sass'
 
 GRD_DOMAIN = "gettingrealdaily.com"
 GR37S_DOMAIN = "gettingreal.37signals.com"
@@ -48,105 +50,101 @@ end
 
 def write_index(essay_index)
   essay_uri = essays[essay_index][1]
-  File.open("index.html", "w") do |file|
-    file << <<-EOF
-<!DOCTYPE html "PUBLIC" "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <title>#{SITE_NAME}</title>
-    <link type="application/atom+xml" href="http://feeds2.feedburner.com/GettingRealDaily" rel="alternate" title="#{SITE_NAME}"/>
-    <style type="text/css">
-      body {
-        font-family: georgia;
-        margin-top: 20px;
-        margin:0;
-        padding:0;
-      }
+  index_as_haml = <<-EOF
+!!! 1.1
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+%head
+  %title
+    #{SITE_NAME}
+  %link{ :href => "http://feeds2.feedburner.com/GettingRealDaily", :title => "#{SITE_NAME}", :rel => "alternate", :type => "application/atom+xml" }
+  %style{ :type => "text/css" }
+    :sass
+      body
+        :font-family georgia
+        :margin-top 20px
+        :margin 0
+        :padding 0
 
-      #header {
-        padding: 0 10px;
-      }
+      #header
+        :padding 0 10px
 
-      h2 {
-        padding-top: 10px;
-        font-size: 30;
-        font-style: italic;
-        display: inline; // stupid IE
-      }
-      #atom {
-        float: right;
-        margin-right: 48%;
-        background: transparent url(rss.gif) no-repeat scroll 50% 0;
-        height: 70px;
-        width: 48px; }
-      #atom a {
-        display: block;
-        height: 48px;
-        margin: 0 auto;
-        width: 48px;
-      }
-      iframe {
-        position: absolute;
-        margin: 0;
-        padding: 0;
-        border: 0;
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
-        left: 0px;
-        bottom: 40px;
-        height: 80%;
-        width: 100%;
-      }
+      h2
+        :padding-top 10px
+        :font-size 30
+        :font-style italic
+        :display inline
 
-      #footer {
-        text-align: center;
-        width: 100%;
-        position: absolute;
-        bottom: 0px;
-        font-size: 11px;
-        padding-bottom: 14px;
-        color: #000;
-        font-family: verdana;
-      }
+      #atom
+        :float right
+        :margin-right 48%
+        :background transparent url(rss.gif) no-repeat scroll 50% 0
+        :height 70px
+        :width 48px
+        a
+          :display block
+          :height 48px
+          :margin 0 auto
+          :width 48px
 
-      #footer a {
-        color: #000;
-      }
+      iframe
+        :position absolute
+        :margin 0
+        :padding 0
+        :border 0
+        :border-top 1px solid black
+        :border-bottom 1px solid black
+        :left 0px
+        :bottom 40px
+        :height 80%
+        :width 100%
 
-      #footer a:hover {
-        background-color: #000;
-        color: #FFF;
-      }
-
-
-    </style>
-  </head>
-  <body>
-    <p id="atom">
-      <a href="http://feeds2.feedburner.com/GettingRealDaily" title="Subscribe to the feed" alt="atom icon"></a>
-    </p>
-    <br/>
-    <div id="header">
-      <h2>#{SITE_NAME}</h2>
-      <h3>Today's essay is...</h3>
-    </div>
-    <iframe src="http://#{GR37S_DOMAIN}/#{essay_uri}"></iframe>
-    <div id="footer">
-        #{SITE_NAME} was created by <a href="http://blogobaggins.com">Christopher R. Murphy</a>.
-        It is not in any way affiliated with <a href="http://37signals.com">37signals, LLC</a> or <a href="http://gettingreal.37signals.com/">Getting Real</a>.
-    </div>
-    <script type="text/javascript">
+      #footer
+        :text-align center
+        :width 100%
+        :position absolute
+        :bottom 0px
+        :font-size 11px
+        :padding-bottom 13px
+        :color #000
+        :font-family verdana
+        a
+          :color #000
+          &:hover
+            :background-color #000
+            :color #FFF
+%body
+  %p#atom
+    %a{ :href => "http://feeds2.feedburner.com/GettingRealDaily", :title => "Subscribe to the feed", :alt => "atom icon" }
+  %br
+  #header
+    %h2
+      #{SITE_NAME}
+    %h3
+      Today's essay is...
+  %iframe{ :src => "http://#{GR37S_DOMAIN}/#{essay_uri}" }
+  #footer
+    #{SITE_NAME} was created by
+    %a{ :href => "http://blogobaggins.com" }
+      Christopher R. Murphy
+    It is not in any way affiliated with
+    %a{ :href => "http://37signals.com" }
+      37signals, LLC
+    or
+    %a{ :href => "http://gettingreal.37signals.com/" }
+      Getting Real
+  %script{ :type => "text/javascript" }
     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
     document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
+  %script{ :type => "text/javascript" }
     try {
     var pageTracker = _gat._getTracker("UA-7577733-1");
     pageTracker._trackPageview();
-    } catch(err) {}</script>
-  </body>
-</html>
+    } catch(err) {}
 EOF
+
+  html = Haml::Engine.new(index_as_haml).render
+  File.open("index.html", "w") do |file|
+    file << html
   end
 end
 
