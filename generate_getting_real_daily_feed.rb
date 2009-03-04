@@ -115,10 +115,8 @@ def write_index(essay_index)
     %a{ :href => "http://feeds2.feedburner.com/GettingRealDaily", :title => "Subscribe to the feed", :alt => "atom icon" }
   %br
   #header
-    %h2
-      #{SITE_NAME}
-    %h3
-      Today's essay is...
+    %h2 #{SITE_NAME}
+    %h3 Today's essay is...
   %iframe{ :src => "http://#{GR37S_DOMAIN}/#{essay_uri}" }
   #footer
     #{SITE_NAME} was created by
