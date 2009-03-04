@@ -1,7 +1,5 @@
-require 'test/unit'
+require "#{File.dirname(__FILE__)}/test_helper"
 require "#{File.dirname(__FILE__)}/../generate_getting_real_daily_feed"
-require 'hpricot'
-require 'mocha'
 
 class GenerateGettingRealDailyAtomFeedTest < Test::Unit::TestCase
   def setup
