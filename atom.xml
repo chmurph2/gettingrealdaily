@@ -1,21 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US">
+<?xml version='1.0' encoding='utf-8' ?>
+<feed xml:lang='en-US' xmlns='http://www.w3.org/2005/Atom'>
   <id>tag:gettingrealdaily.com,2005:/</id>
-  <link type="text/html" href="http://gettingreal.37signals.com" rel="alternate"/>
-  <link type="application/atom+xml" href="http://gettingrealdaily.com/atom.xml" rel="self"/>
+  <link href='http://gettingreal.37signals.com' rel='alternate' type='text/html' />
+  <link href='http://gettingrealdaily.com/atom.xml' rel='self' type='application/atom+xml' />
   <title>Getting Real (daily)</title>
-  <updated>2009-03-03T23:12:51-05:00</updated>
+  <updated>2009-03-04T10:24:20-05:00</updated>
   <entry>
-    <id>tag:gettingrealdaily.com,2005:/ch01_What_is_Getting_Real.php?20090303</id>
-    <published>2009-03-03T23:12:51-05:00</published>
-    <updated>2009-03-03T23:12:51-05:00</updated>
-    <link type="text/html" href="http://gettingreal.37signals.com/ch01_What_is_Getting_Real.php" rel="alternate"/>
-    <title>Introduction (Chapter 1): What is Getting Real?</title>
+    <id>tag:gettingrealdaily.com,2005:/ch03_Less_Mass.php?20090304</id>
+    <published>2009-03-04T10:24:20-05:00</published>
+    <updated>2009-03-04T10:24:20-05:00</updated>
+    <link href='http://gettingreal.37signals.com/ch03_Less_Mass.php' rel='alternate' type='text/html' />
+    <title>Stay Lean (Chapter 3): Less Mass</title>
     <author>
       <name>37signals</name>
     </author>
-    <content type="text/html" mode="escaped">
-      <![CDATA[<iframe width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" src="http://gettingreal.37signals.com/ch01_What_is_Getting_Real.php"></iframe>]]>
+    <content mode='escaped' type='text/html'>
+      <![CDATA[<iframe width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" src="http://gettingreal.37signals.com/ch03_Less_Mass.php"></iframe>]]>
     </content>
   </entry>
 </feed>

@@ -1,10 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
-require 'builder'
 require 'active_support'
 require 'haml'
-require 'sass'
 
 GRD_DOMAIN = "gettingrealdaily.com"
 GR37S_DOMAIN = "gettingreal.37signals.com"
@@ -23,28 +21,28 @@ def write_atom_feed(essay_index)
   essay_title = essays[essay_index][0]
   essay_uri = essays[essay_index][1]
   now = Time.now.xmlschema
+  atom_as_haml = <<-EOF
+!!! XML
+%feed{ "xml:lang" => "en-US", :xmlns => "http://www.w3.org/2005/Atom" }
+  %id tag:#{GRD_DOMAIN},2005:/
+  %link{ :href => "http://#{GR37S_DOMAIN}", :rel => "alternate", :type => "text/html" }
+  %link{ :href => "http://#{GRD_DOMAIN}/atom.xml", :rel => "self", :type => "application/atom+xml" }
+  %title #{SITE_NAME}
+  %updated #{now}
+  %entry
+    %id tag:#{GRD_DOMAIN},2005:/#{essay_uri}?#{Time.now.strftime("%Y%m%d")}
+    %published #{now}
+    %updated #{now}
+    %link{ :href => "http://#{GR37S_DOMAIN}/#{essay_uri}", :rel => "alternate", :type => "text/html" }
+    %title #{essay_title}
+    %author
+      %name 37signals
+    %content{ :mode => "escaped", :type => "text/html" }
+      <![CDATA[<iframe width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" src="http://#{GR37S_DOMAIN}/#{essay_uri}"></iframe>]]>
+EOF
 
   File.open("atom.xml", "w") do |file|
-    xml = Builder::XmlMarkup.new(:target => file, :indent => 2)
-    xml.instruct!
-    xml.feed "xml:lang" => "en-US", :xmlns => "http://www.w3.org/2005/Atom" do
-      xml.id "tag:#{GRD_DOMAIN},2005:/"
-      xml.link :type => "text/html", :href => "http://#{GR37S_DOMAIN}", :rel => "alternate"
-      xml.link :type => "application/atom+xml", :href => "http://#{GRD_DOMAIN}/atom.xml", :rel => "self"
-      xml.title SITE_NAME
-      xml.updated now
-      xml.entry do
-        xml.id "tag:#{GRD_DOMAIN},2005:/#{essay_uri}?#{Time.now.strftime("%Y%m%d")}"
-        xml.published now
-        xml.updated now
-        xml.link :type => "text/html", :href => "http://#{GR37S_DOMAIN}/#{essay_uri}", :rel => "alternate"
-        xml.title essay_title
-        xml.author { xml.name "37signals" }
-        xml.content :type => "text/html", :mode => "escaped" do
-          xml.cdata!(%{<iframe width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" src="http://#{GR37S_DOMAIN}/#{essay_uri}"></iframe>})
-        end
-      end
-    end
+    file << Haml::Engine.new(atom_as_haml).render
   end
 end
 
@@ -142,9 +140,8 @@ def write_index(essay_index)
     } catch(err) {}
 EOF
 
-  html = Haml::Engine.new(index_as_haml).render
   File.open("index.html", "w") do |file|
-    file << html
+    file << Haml::Engine.new(index_as_haml).render
   end
 end
 
