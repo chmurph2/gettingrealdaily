@@ -1,5 +1,5 @@
 require "test/unit"
-require "../parse_table_of_contents"
+require "#{File.dirname(__FILE__)}/../parse_table_of_contents"
 
 class ParseTableOfContentsTest < Test::Unit::TestCase
   def setup

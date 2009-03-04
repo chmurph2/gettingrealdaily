@@ -1,5 +1,5 @@
 require 'test/unit'
-require '../generate_getting_real_daily_feed'
+require "#{File.dirname(__FILE__)}/../generate_getting_real_daily_feed"
 require 'hpricot'
 require 'mocha'
 
@@ -17,7 +17,6 @@ class GenerateGettingRealDailyAtomFeedTest < Test::Unit::TestCase
   def test_should_calculate_the_last_essay_index_if_today_is_91_days_after_launch_date
     Date.stubs(:today).returns(Date.new(2009, 02, 23) + 91)
     assert_equal 90, calculate_essay_index
-    puts essays.size
   end
 
   def test_should_calculate_the_first_index_if_today_is_92_days_after_launch_date
@@ -47,7 +46,7 @@ class GenerateGettingRealDailyAtomFeedTest < Test::Unit::TestCase
   end
 
   def test_should_have_the_entry_id
-    assert_equal "tag:gettingrealdaily.com,2005:/ch01_What_is_Getting_Real.php?20090303", @atom_file.at("entry/id").inner_html
+    assert_match /tag:gettingrealdaily.com,2005:\/ch01_What_is_Getting_Real.php?/, @atom_file.at("entry/id").inner_html
   end
 
   def test_should_have_the_entry_published_to_now
