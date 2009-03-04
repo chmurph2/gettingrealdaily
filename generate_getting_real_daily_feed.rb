@@ -104,7 +104,7 @@ def write_index(essay_index)
         position: absolute;
         bottom: 0px;
         font-size: 11px;
-        padding-bottom: 13px;
+        padding-bottom: 14px;
         color: #000;
         font-family: verdana;
       }
