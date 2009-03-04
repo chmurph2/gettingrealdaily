@@ -23,5 +23,5 @@ def parse
   end
 end
 
-# Uncomment to see the array.  I just copied it over to the actual feed generation script.
+# Uncomment this to see the array.  I simply copied the output to the actual feed generation script.
 # puts parse.inspect
