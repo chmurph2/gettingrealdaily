@@ -5,7 +5,7 @@ require 'active_support'
 
 # Parse the Getting Real table of contents, returning an array of arrays of
 # essay information: [chapter title (chapter #): essay title, uri]
-def parse
+def build_essay_array
   returning essays = [] do
     # English translation only for now
     doc = Hpricot(open("http://gettingreal.37signals.com/toc.php"))
@@ -22,6 +22,10 @@ def parse
     end
   end
 end
+
+# drop the last essay as it's incredibly boring.
+essays = build_essay_array
+essays.delete(essays.size)
 
 # Uncomment this to see the array.  I simply copied the output to the actual feed generation script.
 # puts parse.inspect

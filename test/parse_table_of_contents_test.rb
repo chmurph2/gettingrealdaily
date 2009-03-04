@@ -3,7 +3,7 @@ require "../parse_table_of_contents"
 
 class ParseTableOfContentsTest < Test::Unit::TestCase
   def setup
-    @essays = parse
+    @essays = build_essay_array
   end
 
   def test_should_return_an_array_of_arrays
