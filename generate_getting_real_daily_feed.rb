@@ -120,7 +120,7 @@ def write_index(essay_index)
   %iframe{ :src => "http://#{GR37S_DOMAIN}/#{essay_uri}" }
   #footer
     #{SITE_NAME} was created by
-    %a{ :href => "http://blogobaggins.com" }
+    %a{ :href => "http://blogobaggins.com" }<
       Christopher R. Murphy
     It is not in any way affiliated with
     %a{ :href => "http://37signals.com" }
