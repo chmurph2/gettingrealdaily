@@ -119,15 +119,12 @@ def write_index(essay_index)
     %h3 Today's essay is...
   %iframe{ :src => "http://#{GR37S_DOMAIN}/#{essay_uri}" }
   #footer
-    #{SITE_NAME} was created by
-    %a{ :href => "http://blogobaggins.com" }<
-      Christopher R. Murphy
-    It is not in any way affiliated with
-    %a{ :href => "http://37signals.com" }
-      37signals, LLC
-    or
-    %a{ :href => "http://gettingreal.37signals.com/" }
-      Getting Real
+    #{SITE_NAME} is not in any way affiliated with
+    %a{ :href => "http://37signals.com" } 37signals, LLC
+    or the
+    %a{ :href => "http://gettingreal.37signals.com/" } Getting Real
+    book. More information is
+    %a{ :href => "http://blogobaggins.com/2009/02/28/getting-real-daily.html" }< here.
   %script{ :type => "text/javascript" }
     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
     document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
