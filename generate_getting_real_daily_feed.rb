@@ -41,7 +41,7 @@ def write_atom_feed(essay_index)
       <![CDATA[<iframe width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" src="http://#{GR37S_DOMAIN}/#{essay_uri}"></iframe>]]>
 EOF
 
-  File.open("atom.xml", "w") do |file|
+  open("atom.xml", "w") do |file|
     file << Haml::Engine.new(atom_as_haml).render
   end
 end
@@ -135,7 +135,7 @@ def write_index(essay_index)
     } catch(err) {}
 EOF
 
-  File.open("index.html", "w") do |file|
+  open("index.html", "w") do |file|
     file << Haml::Engine.new(index_as_haml).render
   end
 end
