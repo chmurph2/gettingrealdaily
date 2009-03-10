@@ -57,6 +57,11 @@ def write_index(essay_index)
   %link{ :href => "http://feeds2.feedburner.com/GettingRealDaily", :title => "#{SITE_NAME}", :rel => "alternate", :type => "application/atom+xml" }
   %style{ :type => "text/css" }
     :sass
+      // grey
+      !color_subdued = #777
+      // white
+      !color_bg = #fff
+
       body
         :font-family georgia
         :margin-top 20px
@@ -72,9 +77,23 @@ def write_index(essay_index)
         :font-style italic
         :display inline
 
+      #grd_about
+        :margin 20px 10px 0 0
+        :float right
+        :width 35%
+        :font-size 10px
+        :font-family verdana
+        :color = !color_subdued
+        a
+          :color = !color_subdued
+          &:hover
+            :background-color = !color_subdued
+            :color = !color_bg
+
       #atom
         :float right
-        :margin-right 48%
+        :margin-top 16px
+        :margin-right 13%
         :background transparent url(rss.gif) no-repeat scroll 50% 0
         :height 70px
         :width 48px
@@ -90,41 +109,32 @@ def write_index(essay_index)
         :padding 0
         :border 0
         :border-top 1px solid black
-        :border-bottom 1px solid black
         :left 0px
-        :bottom 40px
+        :bottom 0px
         :height 80%
         :width 100%
-
-      #footer
-        :text-align center
-        :width 100%
-        :position absolute
-        :bottom 0px
-        :font-size 11px
-        :padding-bottom 13px
-        :color #000
-        :font-family verdana
-        a
-          :color #000
-          &:hover
-            :background-color #000
-            :color #FFF
 %body
+  #grd_about
+    %a{ :href => "http://gettingreal.37signals.com/" }Getting Real
+    is the business, design, programming, and marketing philosophies of
+    %a{ :href => "http://www.37signals.com/" }37signals
+    &mdash; a developer of web-based software used by over 1 million people and businesses in 70 countries. The book is available as a&nbsp;
+    %a{ :href => "https://gettingreal.37signals.com/purchases/new" }> PDF
+    ,&nbsp;
+    %a{ :href => "http://www.lulu.com/content/383343" }> paperback
+    , or&nbsp;
+    %a{ :href => "http://gettingreal.37signals.com/toc.php" }>free online read
+    \\. This site offers one essay from the book every day and is not affiliated with 37signals.&nbsp;
+    %a{ :href => "http://blogobaggins.com/2009/02/28/getting-real-daily.html" }> More
+    \\...
   %p#atom
     %a{ :href => "http://feeds2.feedburner.com/GettingRealDaily", :title => "Subscribe to the feed", :alt => "atom icon" }
   %br
   #header
     %h2 #{SITE_NAME}
-    %h3 Today's essay is...
+    #detail
+      %h3 Today's essay is...
   %iframe{ :src => "http://#{GR37S_DOMAIN}/#{essay_uri}" }
-  #footer
-    #{SITE_NAME} is not in any way affiliated with
-    %a{ :href => "http://37signals.com" } 37signals, LLC
-    or the
-    %a{ :href => "http://gettingreal.37signals.com/" } Getting Real
-    book. More information is
-    %a{ :href => "http://blogobaggins.com/2009/02/28/getting-real-daily.html" }< here.
   %script{ :type => "text/javascript" }
     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
     document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

@@ -21,9 +21,23 @@
       font-style: italic;
       display: inline; }
     
+    #grd_about {
+      margin: 20px 10px 0 0;
+      float: right;
+      width: 35%;
+      font-size: 10px;
+      font-family: verdana;
+      color: #777777; }
+      #grd_about a {
+        color: #777777; }
+        #grd_about a:hover {
+          background-color: #777777;
+          color: #ffffff; }
+    
     #atom {
       float: right;
-      margin-right: 48%;
+      margin-top: 16px;
+      margin-right: 13%;
       background: transparent url(rss.gif) no-repeat scroll 50% 0;
       height: 70px;
       width: 48px; }
@@ -39,46 +53,30 @@
       padding: 0;
       border: 0;
       border-top: 1px solid black;
-      border-bottom: 1px solid black;
       left: 0px;
-      bottom: 40px;
+      bottom: 0px;
       height: 80%;
       width: 100%; }
-    
-    #footer {
-      text-align: center;
-      width: 100%;
-      position: absolute;
-      bottom: 0px;
-      font-size: 11px;
-      padding-bottom: 13px;
-      color: #000;
-      font-family: verdana; }
-      #footer a {
-        color: #000; }
-        #footer a:hover {
-          background-color: #000;
-          color: #FFF; }
   </style>
 </head>
 <body>
+  <div id='grd_about'>
+    <a href='http://gettingreal.37signals.com/'>Getting Real</a>
+    is the business, design, programming, and marketing philosophies of
+    <a href='http://www.37signals.com/'>37signals</a>
+    &mdash; a developer of web-based software used by over 1 million people and businesses in 70 countries. The book is available as a&nbsp;<a href='https://gettingreal.37signals.com/purchases/new'>PDF</a>,&nbsp;<a href='http://www.lulu.com/content/383343'>paperback</a>, or&nbsp;<a href='http://gettingreal.37signals.com/toc.php'>free online read</a>. This site offers one essay from the book every day and is not affiliated with 37signals.&nbsp;<a href='http://blogobaggins.com/2009/02/28/getting-real-daily.html'>More</a>...
+  </div>
   <p id='atom'>
     <a alt='atom icon' href='http://feeds2.feedburner.com/GettingRealDaily' title='Subscribe to the feed'></a>
   </p>
   <br />
   <div id='header'>
     <h2>Getting Real (daily)</h2>
-    <h3>Today's essay is...</h3>
+    <div id='detail'>
+      <h3>Today's essay is...</h3>
+    </div>
   </div>
-  <iframe src='http://gettingreal.37signals.com/ch03_Lower_Your_Cost_of_Change.php'></iframe>
-  <div id='footer'>
-    Getting Real (daily) is not in any way affiliated with
-    <a href='http://37signals.com'>37signals, LLC</a>
-    or the
-    <a href='http://gettingreal.37signals.com/'>Getting Real</a>
-    book. More information is
-    <a href='http://blogobaggins.com/2009/02/28/getting-real-daily.html'>here.</a>
-  </div>
+  <iframe src='http://gettingreal.37signals.com/ch03_Be_Yourself.php'></iframe>
   <script type='text/javascript'>
     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
     document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
