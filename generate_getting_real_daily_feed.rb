@@ -3,6 +3,7 @@
 require 'rubygems'
 require 'active_support'
 require 'haml'
+require 'fileutils'
 
 GRD_DOMAIN = "gettingrealdaily.com"
 GR37S_DOMAIN = "gettingreal.37signals.com"
