@@ -1,8 +1,10 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
-require 'active_support'
+require 'date'
+require 'active_support/core_ext'
 require 'haml'
+require 'sass/plugin'
 require 'fileutils'
 
 GRD_DOMAIN = "gettingrealdaily.com"
